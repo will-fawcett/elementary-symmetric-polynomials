@@ -17,6 +17,7 @@ std::vector<double> ESPCalc::calc_esp_list(){
  */
 double ESPCalc::calc_esp_k(int k){
 
+  if(k<0) throw std::invalid_argument("e_k is not defined for k < 0");
   if(k==0) return 1;
 
   std::vector< std::vector<int> > indices = calculate_indices(m_size, k);
@@ -68,7 +69,7 @@ std::vector< std::vector<int> > ESPCalc::calculate_indices(int size, int k){
     }
   }
   else{
-    throw std::invalid_argument("Indices defined for k=0");
+    throw std::invalid_argument("e_k is not defined for k < 1; use calc_esp_k for k=0");
   }
 
   // store in cache
