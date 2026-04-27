@@ -47,18 +47,24 @@ std::vector< std::vector<int> > ESPCalc::calculate_indices(int size, int k){
     return m_index_cache[key];
   }
 
-  std::vector<std::vector<int>> indices;
-  
+  if(k<0){
+    throw std::invalid_argument("e_k is not defined for k < 0");
+  }
   if(k>size){
     throw std::invalid_argument("e_k is only defined for k <= N");
   }
+
+  std::vector<std::vector<int>> indices;
+
+  if(k==0){
+    indices.push_back(std::vector<int>{});
+  }
   else if(k==1){
     for(int x=0; x<size; ++x){
-      std::vector<int> temp = {x};
-      indices.push_back(temp);
+      indices.push_back(std::vector<int>{x});
     }
   }
-  else if(k>1){
+  else{
     std::vector< std::vector<int> > old_indices = calculate_indices(size, k-1);
     for(auto tup : old_indices){
       for(int i=tup.back()+1; i<size; ++i){
@@ -67,9 +73,6 @@ std::vector< std::vector<int> > ESPCalc::calculate_indices(int size, int k){
         indices.push_back(new_tup);
       }
     }
-  }
-  else{
-    throw std::invalid_argument("e_k is not defined for k < 1; use calc_esp_k for k=0");
   }
 
   // store in cache
