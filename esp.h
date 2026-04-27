@@ -10,14 +10,14 @@ class ESPCalc
 {
 
   private:
-    std::vector<double> m_roots; 
-    int m_size; 
+    std::vector<double> m_roots;
+    int m_size;
 
-    std::map< std::pair<int, int>, std::vector< std::vector<int> > > m_index_cache;
+    std::map< int, std::vector< std::vector<int> > > m_index_cache;
 
 
   public:
-    ESPCalc(std::vector<double> roots) : m_roots(roots) { m_size = m_roots.size();}
+    ESPCalc(const std::vector<double>& roots) : m_roots(roots), m_size(m_roots.size()) {}
 
     double calc_esp_k(int k);
     std::vector<double> calc_esp_list();
