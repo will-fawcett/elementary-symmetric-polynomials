@@ -3,7 +3,7 @@
 std::vector<double> ESPCalc::calc_esp_list(){
 
   std::vector<double> esp_list;
-  for(int i=0; i<m_size; ++i){
+  for(int i=0; i<=m_size; ++i){
     esp_list.push_back( calc_esp_k(i) );
   }
 
