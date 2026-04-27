@@ -1,6 +1,9 @@
+#pragma once
+
 #include <vector>
 #include <map>
 #include <utility>
+#include <stdexcept>
 
 
 class ESPCalc
