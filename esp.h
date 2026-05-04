@@ -22,8 +22,8 @@ class ESPCalc
     double calc_esp_k(int k);
     std::vector<double> calc_esp_list();
 
-    // Made public as this could be used outside the class  
-    std::vector< std::vector<int> > calculate_indices(int size, int k);
+    // Made public as this could be used outside the class
+    std::vector< std::vector<int> > calculate_indices(int k);
 
 
 };
